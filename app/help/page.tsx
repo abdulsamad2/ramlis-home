@@ -150,8 +150,8 @@ export default function HelpPage() {
                 <Clock className="h-4 w-4" />
                 <span>Mon-Fri 8AM-8PM EST</span>
               </div>
-              <a href="tel:+15551234567" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors inline-block">
-                Call (555) 123-4567
+              <a href="tel:+13212404270" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors inline-block">
+                Call (321) 240-4270
               </a>
             </div>
             
@@ -165,9 +165,37 @@ export default function HelpPage() {
                 <Clock className="h-4 w-4" />
                 <span>Response within 24 hours</span>
               </div>
-              <a href="mailto:support@ramlishome.com" className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors inline-block">
+              <a href="mailto:sales@petiteplace.net" className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors inline-block">
                 Send Email
               </a>
+            </div>
+          </div>
+          
+          {/* Business Information */}
+          <div className="mt-16 bg-slate-50 rounded-2xl p-8">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold font-heading text-center mb-8">Business Information</h3>
+              
+              <div className="grid md:grid-cols-2 gap-8 text-center md:text-left">
+                <div>
+                  <h4 className="text-lg font-semibold text-slate-900 mb-4">Corporate Address</h4>
+                  <div className="text-slate-700 space-y-1">
+                    <p>SAMARA SHOP SERVICES LLC</p>
+                    <p>7726 Winegard Road</p>
+                    <p>Orlando, FL 32609-7146</p>
+                    <p>United States</p>
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="text-lg font-semibold text-slate-900 mb-4">Registration Details</h4>
+                  <div className="text-slate-700 space-y-1">
+                    <p><span className="font-medium">LLC Registration:</span> #3213581920</p>
+                    <p><span className="font-medium">State:</span> Florida</p>
+                    <p><span className="font-medium">Business Type:</span> Limited Liability Company</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

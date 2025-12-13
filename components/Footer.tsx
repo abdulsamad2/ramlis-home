@@ -12,10 +12,10 @@ export default function Footer() {
               <div className="bg-primary text-white p-2 rounded-lg">
                 <span className="font-heading font-bold text-xl">R</span>
               </div>
-              <span className="font-heading font-bold text-xl">Ramlis Home</span>
+              <span className="font-heading font-bold text-xl">Ramlis Home™</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Elevating home living with premium essentials. Direct from global manufacturers to your doorstep.
+              Explore premium kitchen tools and home goods at RAMLISHOME™. From reusable air fryer liners to artisan essentials — designed for everyday durability.
             </p>
             <div className="flex gap-4 pt-2">
               {[Facebook, Twitter, Instagram].map((Icon, i) => (
@@ -66,26 +66,29 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-6">Visit Us</h3>
+            <h3 className="font-heading font-bold text-lg mb-6">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-slate-400">
                 <MapPin className="h-5 w-5 mt-1 flex-shrink-0 text-primary" />
-                <span>123 Commerce Avenue<br/>New York, NY 10001</span>
+                <span>SAMARA SHOP SERVICES LLC<br/>7726 Winegard Road<br/>Orlando, FL 32609-7146</span>
               </li>
               <li className="flex items-center gap-3 text-slate-400">
                 <Phone className="h-5 w-5 flex-shrink-0 text-primary" />
-                <span>+1 (555) 123-4567</span>
+                <span>+1 (321) 240-4270</span>
               </li>
               <li className="flex items-center gap-3 text-slate-400">
                 <Mail className="h-5 w-5 flex-shrink-0 text-primary" />
-                <span>support@ramlishome.com</span>
+                <span>sales@petiteplace.net</span>
+              </li>
+              <li className="text-xs text-slate-500 mt-4">
+                LLC Registration: #3213581920
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-slate-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-          <p>© 2025 Ramlis Home. All rights reserved.</p>
+          <p>© 2025 Ramlis Home™. All rights reserved.</p>
           <div className="flex flex-wrap gap-6 justify-center md:justify-end">
             <Link href="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
