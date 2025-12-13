@@ -13,6 +13,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-heading" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: {
     template: "%s | Ramlis Home™ - Premium Kitchen Products",
     default: "Ramlis Home™ - Premium Kitchen Products & Appliances"
