@@ -117,7 +117,7 @@ export default function SignupPage() {
           Create your account
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
-          Join Ramlis Home for exclusive deals and faster checkout
+          Join RAMLISHOME for exclusive deals and faster checkout
         </p>
       </div>
 

@@ -9,10 +9,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="bg-primary text-white p-2 rounded-lg">
-                <span className="font-heading font-bold text-xl">R</span>
-              </div>
-              <span className="font-heading font-bold text-xl">Ramlis Home™</span>
+              <span className="font-heading font-bold text-xl">RAMLISHOME™</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
               Explore premium kitchen tools and home goods at RAMLISHOME™. From reusable air fryer liners to artisan essentials — designed for everyday durability.
@@ -53,7 +50,7 @@ export default function Footer() {
                 { label: 'Help Center', href: '/help' },
                 { label: 'Contact Us', href: '/contact' },
                 { label: 'Shipping & Returns', href: '/shipping' },
-                { label: 'Track Order', href: '/account' },
+                { label: 'Track Order', href: '/track-order' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">
@@ -88,7 +85,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-          <p>© 2025 Ramlis Home™. All rights reserved.</p>
+          <p>&#169; 2025 RAMLISHOME&#8482;. All rights reserved.</p>
           <div className="flex flex-wrap gap-6 justify-center md:justify-end">
             <Link href="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</Link>

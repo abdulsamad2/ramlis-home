@@ -8,21 +8,30 @@ import { Product, Category } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
 function ProductsPageContent() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [sortBy, setSortBy] = useState('name');
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
-  const [showFilters, setShowFilters] = useState(false);
-  const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
-  
   const router = useRouter();
   const urlSearchParams = useSearchParams();
   
   const selectedCategory = urlSearchParams.get('category');
   const selectedFilter = urlSearchParams.get('filter');
+  const initialSearch = urlSearchParams.get('search') || '';
+
+  const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState(initialSearch);
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [sortBy, setSortBy] = useState('name');
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+  const [showFilters, setShowFilters] = useState(false);
+  const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
+
+  // Sync search query from URL
+  useEffect(() => {
+    const search = urlSearchParams.get('search');
+    if (search !== null) {
+      setSearchQuery(search);
+    }
+  }, [urlSearchParams]);
 
   // Fetch data
   // Close dropdown when clicking outside or pressing Escape

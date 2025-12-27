@@ -25,7 +25,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "Premium Kitchen Products & Home Essentials | Ramlis Home";
+    document.title = "Premium Kitchen Products & Home Essentials | RAMLISHOME";
   }, []);
 
   useEffect(() => {

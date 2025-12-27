@@ -101,11 +101,11 @@ export default function AboutPage() {
               <div className="text-slate-400">Founded</div>
             </div>
             <div className="p-4">
-              <div className="text-4xl font-bold text-primary mb-2">1000+</div>
+              <div className="text-4xl font-bold text-primary mb-2">50+</div>
               <div className="text-slate-400">Curated Products</div>
             </div>
             <div className="p-4">
-              <div className="text-4xl font-bold text-primary mb-2">50+</div>
+              <div className="text-4xl font-bold text-primary mb-2">10+</div>
               <div className="text-slate-400">Partner Brands</div>
             </div>
             <div className="p-4">

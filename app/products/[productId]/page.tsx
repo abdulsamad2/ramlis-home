@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getProductById, getCategoryById, getProductsByCategory } from '@/lib/database';
 import ProductCard from '@/components/ProductCard';
+import ProductImageWatermark from '@/components/ProductImageWatermark';
 import ProductActions from '@/components/ProductActions';
 import { ArrowLeft, Star, Truck, Shield, RotateCcw, Check } from 'lucide-react';
 import { cn, truncateTitle } from '@/lib/utils';
@@ -88,6 +89,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 priority
               />
+              <ProductImageWatermark />
               
               {/* Floating Badges */}
               <div className="absolute top-4 left-4 flex flex-col gap-2">

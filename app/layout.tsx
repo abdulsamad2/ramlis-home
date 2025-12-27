@@ -15,27 +15,27 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-heading" });
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: {
-    template: "%s | Ramlis Home™ - Premium Kitchen Products",
-    default: "Ramlis Home™ - Premium Kitchen Products & Appliances"
+    template: "%s | RAMLISHOME™ - Premium Kitchen Products",
+    default: "RAMLISHOME™ - Premium Kitchen Products & Appliances"
   },
   description: "Explore premium kitchen tools and home goods at RAMLISHOME™. From reusable air fryer liners to artisan essentials — designed for everyday durability.",
   keywords: ["kitchen products", "cookware", "kitchen appliances", "home essentials", "premium kitchen", "cooking equipment"],
-  authors: [{ name: "Ramlis Home" }],
-  creator: "Ramlis Home",
-  publisher: "Ramlis Home",
+  authors: [{ name: "RAMLISHOME" }],
+  creator: "RAMLISHOME",
+  publisher: "RAMLISHOME",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-    siteName: "Ramlis Home™",
-    title: "Ramlis Home™ - Premium Kitchen Products & Appliances",
+    siteName: "RAMLISHOME™",
+    title: "RAMLISHOME™ - Premium Kitchen Products & Appliances",
     description: "Explore premium kitchen tools and home goods at RAMLISHOME™. From reusable air fryer liners to artisan essentials — designed for everyday durability.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Ramlis Home - Premium Kitchen Products",
+        alt: "RAMLISHOME - Premium Kitchen Products",
       },
     ],
   },

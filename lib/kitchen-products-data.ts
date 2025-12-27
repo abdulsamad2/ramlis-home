@@ -16,31 +16,10 @@ export const categories: Category[] = [
     productCount: 7
   },
   {
-    id: 'kitchen-utensils',
-    name: 'Kitchen Utensils',
-    description: 'Essential cooking tools and utensils for food preparation',
-    image: 'https://images.unsplash.com/photo-1594736797933-d0f32e5d0681?w=500&h=300&fit=crop',
-    productCount: 10
-  },
-  {
     id: 'small-appliances',
     name: 'Small Appliances',
     description: 'Convenient electric appliances to enhance your cooking',
     image: 'https://images.unsplash.com/photo-1585515656662-a4e3944c1ab4?w=500&h=300&fit=crop',
-    productCount: 8
-  },
-  {
-    id: 'knives-cutlery',
-    name: 'Knives & Cutlery',
-    description: 'Professional-grade knives and cutting tools',
-    image: 'https://images.unsplash.com/photo-1593618998160-e34014c9a66b?w=500&h=300&fit=crop',
-    productCount: 6
-  },
-  {
-    id: 'kitchen-storage',
-    name: 'Kitchen Storage',
-    description: 'Food storage containers and organization solutions',
-    image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=500&h=300&fit=crop',
     productCount: 8
   },
   {
@@ -51,13 +30,6 @@ export const categories: Category[] = [
     productCount: 9
   },
   {
-    id: 'dinnerware',
-    name: 'Dinnerware',
-    description: 'Beautiful plates, bowls, and serving pieces',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=300&fit=crop',
-    productCount: 6
-  },
-  {
     id: 'glassware',
     name: 'Glassware',
     description: 'Elegant glasses, mugs, and drinkware collection',
@@ -65,25 +37,11 @@ export const categories: Category[] = [
     productCount: 7
   },
   {
-    id: 'kitchen-textiles',
-    name: 'Kitchen Textiles',
-    description: 'Kitchen towels, aprons, and protective wear',
-    image: 'https://images.unsplash.com/photo-1556909114-4f6e3e8f9eab?w=500&h=300&fit=crop',
-    productCount: 6
-  },
-  {
     id: 'food-preparation',
     name: 'Food Preparation',
     description: 'Cutting boards, measuring tools, and prep essentials',
     image: 'https://images.unsplash.com/photo-1556909253-4df5c4ac1d42?w=500&h=300&fit=crop',
     productCount: 8
-  },
-  {
-    id: 'specialty-equipment',
-    name: 'Specialty Equipment',
-    description: 'Professional and specialized kitchen equipment',
-    image: 'https://images.unsplash.com/photo-1556909297-4b4c4bcdb306?w=500&h=300&fit=crop',
-    productCount: 7
   }
 ];
 
@@ -266,121 +224,6 @@ export const products: Product[] = [
     reviews: 187
   },
 
-  // Kitchen Utensils - 10 products
-  {
-    id: 'utensil-set-silicone',
-    name: 'Silicone Utensil Set',
-    description: 'Complete 12-piece silicone cooking utensil set with holder',
-    price: 39.99,
-    image: 'https://images.unsplash.com/photo-1594736797933-d0f32e5d0681?w=400&h=400&fit=crop',
-    category: 'kitchen-utensils',
-    weight: '3 lbs',
-    isPopular: true,
-    rating: 4.7,
-    reviews: 456
-  },
-  {
-    id: 'wooden-spoon-set',
-    name: 'Bamboo Wooden Spoon Set',
-    description: 'Eco-friendly bamboo cooking spoons and spatulas',
-    price: 16.99,
-    image: 'https://images.unsplash.com/photo-1556909114-4c4bcde4c3c3?w=400&h=400&fit=crop',
-    category: 'kitchen-utensils',
-    weight: '1 lb',
-    rating: 4.5,
-    reviews: 234
-  },
-  {
-    id: 'whisk-stainless-steel',
-    name: 'Stainless Steel Whisk Set',
-    description: 'Professional balloon whisks in 3 different sizes',
-    price: 21.99,
-    image: 'https://images.unsplash.com/photo-1593618998160-e34014c9a66b?w=400&h=400&fit=crop',
-    category: 'kitchen-utensils',
-    weight: '1.5 lbs',
-    rating: 4.6,
-    reviews: 178
-  },
-  {
-    id: 'tongs-silicone-tip',
-    name: 'Silicone Tip Tongs',
-    description: 'Heat-resistant tongs with silicone tips, locking mechanism',
-    price: 12.99,
-    originalPrice: 16.99,
-    image: 'https://images.unsplash.com/photo-1556909297-4b4c4bcdb306?w=400&h=400&fit=crop',
-    category: 'kitchen-utensils',
-    weight: '0.5 lbs',
-    isOnSale: true,
-    rating: 4.4,
-    reviews: 267
-  },
-  {
-    id: 'ladle-stainless',
-    name: 'Stainless Steel Ladle',
-    description: 'One-piece stainless steel ladle with ergonomic handle',
-    price: 14.99,
-    image: 'https://images.unsplash.com/photo-1585515656662-a4e3944c1ab4?w=400&h=400&fit=crop',
-    category: 'kitchen-utensils',
-    weight: '0.7 lbs',
-    rating: 4.5,
-    reviews: 145
-  },
-  {
-    id: 'spatula-set-heat-resistant',
-    name: 'Heat-Resistant Spatula Set',
-    description: 'Flexible silicone spatulas for non-stick cookware',
-    price: 18.99,
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop',
-    category: 'kitchen-utensils',
-    weight: '1 lb',
-    rating: 4.6,
-    reviews: 189
-  },
-  {
-    id: 'pasta-fork-wooden',
-    name: 'Wooden Pasta Fork',
-    description: 'Traditional wooden pasta fork for serving and mixing',
-    price: 8.99,
-    image: 'https://images.unsplash.com/photo-1556909253-4df5c4ac1d42?w=400&h=400&fit=crop',
-    category: 'kitchen-utensils',
-    weight: '0.3 lbs',
-    rating: 4.3,
-    reviews: 98
-  },
-  {
-    id: 'potato-masher-stainless',
-    name: 'Stainless Steel Potato Masher',
-    description: 'Heavy-duty potato masher with comfortable grip',
-    price: 15.99,
-    image: 'https://images.unsplash.com/photo-1556909254-4c4bcde4c3c3?w=400&h=400&fit=crop',
-    category: 'kitchen-utensils',
-    weight: '1 lb',
-    rating: 4.7,
-    reviews: 123
-  },
-  {
-    id: 'basting-brush-silicone',
-    name: 'Silicone Basting Brush',
-    description: 'Heat-resistant silicone basting brush, dishwasher safe',
-    price: 9.99,
-    image: 'https://images.unsplash.com/photo-1556909114-5ba4ade8648c?w=400&h=400&fit=crop',
-    category: 'kitchen-utensils',
-    weight: '0.2 lbs',
-    rating: 4.4,
-    reviews: 156
-  },
-  {
-    id: 'slotted-spoon-stainless',
-    name: 'Stainless Steel Slotted Spoon',
-    description: 'Professional slotted spoon for straining and serving',
-    price: 11.99,
-    image: 'https://images.unsplash.com/photo-1556909114-46b0ac27c98c?w=400&h=400&fit=crop',
-    category: 'kitchen-utensils',
-    weight: '0.4 lbs',
-    rating: 4.5,
-    reviews: 167
-  },
-
   // Small Appliances - 8 products
   {
     id: 'stand-mixer-professional',
@@ -474,172 +317,6 @@ export const products: Product[] = [
     category: 'small-appliances',
     weight: '2 lbs',
     rating: 4.7,
-    reviews: 234
-  },
-
-  // Knives & Cutlery - 6 products
-  {
-    id: 'chef-knife-german',
-    name: 'German Steel Chef Knife 8"',
-    description: 'Professional German steel chef knife with ergonomic handle',
-    price: 89.99,
-    image: 'https://images.unsplash.com/photo-1593618998160-e34014c9a66b?w=400&h=400&fit=crop',
-    category: 'knives-cutlery',
-    weight: '0.8 lbs',
-    isPopular: true,
-    rating: 4.9,
-    reviews: 278
-  },
-  {
-    id: 'knife-block-set',
-    name: '15-Piece Knife Block Set',
-    description: 'Complete knife set with wooden block and kitchen shears',
-    price: 159.99,
-    originalPrice: 199.99,
-    image: 'https://images.unsplash.com/photo-1556909114-46b0ac27c98c?w=400&h=400&fit=crop',
-    category: 'knives-cutlery',
-    weight: '8 lbs',
-    isOnSale: true,
-    rating: 4.6,
-    reviews: 445
-  },
-  {
-    id: 'paring-knife-ceramic',
-    name: 'Ceramic Paring Knife',
-    description: 'Ultra-sharp ceramic paring knife that stays sharp longer',
-    price: 24.99,
-    image: 'https://images.unsplash.com/photo-1556909254-4c4bcde4c3c3?w=400&h=400&fit=crop',
-    category: 'knives-cutlery',
-    weight: '0.2 lbs',
-    rating: 4.5,
-    reviews: 167
-  },
-  {
-    id: 'santoku-knife-japanese',
-    name: 'Japanese Santoku Knife 7"',
-    description: 'Traditional Japanese santoku knife with Damascus pattern',
-    price: 119.99,
-    image: 'https://images.unsplash.com/photo-1556909297-4b4c4bcdb306?w=400&h=400&fit=crop',
-    category: 'knives-cutlery',
-    weight: '0.6 lbs',
-    rating: 4.8,
-    reviews: 189
-  },
-  {
-    id: 'bread-knife-serrated',
-    name: 'Serrated Bread Knife',
-    description: '10-inch serrated bread knife with comfortable grip',
-    price: 34.99,
-    image: 'https://images.unsplash.com/photo-1556909253-4df5c4ac1d42?w=400&h=400&fit=crop',
-    category: 'knives-cutlery',
-    weight: '0.5 lbs',
-    rating: 4.4,
-    reviews: 234
-  },
-  {
-    id: 'steak-knife-set',
-    name: 'Steak Knife Set of 6',
-    description: 'Sharp stainless steel steak knives with wooden handles',
-    price: 49.99,
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop',
-    category: 'knives-cutlery',
-    weight: '2 lbs',
-    rating: 4.7,
-    reviews: 156
-  },
-
-  // Kitchen Storage - 8 products
-  {
-    id: 'glass-containers-set',
-    name: 'Glass Food Storage Set',
-    description: '10-piece borosilicate glass containers with airtight lids',
-    price: 59.99,
-    originalPrice: 79.99,
-    image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400&h=400&fit=crop',
-    category: 'kitchen-storage',
-    weight: '8 lbs',
-    isOnSale: true,
-    isPopular: true,
-    rating: 4.6,
-    reviews: 567
-  },
-  {
-    id: 'plastic-containers-bpa-free',
-    name: 'BPA-Free Plastic Container Set',
-    description: 'Stackable plastic food storage containers, microwave safe',
-    price: 29.99,
-    image: 'https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=400&h=400&fit=crop',
-    category: 'kitchen-storage',
-    weight: '3 lbs',
-    rating: 4.4,
-    reviews: 345
-  },
-  {
-    id: 'spice-rack-magnetic',
-    name: 'Magnetic Spice Rack',
-    description: '12-jar magnetic spice rack with pre-filled common spices',
-    price: 44.99,
-    image: 'https://images.unsplash.com/photo-1556909114-5ba4ade8648c?w=400&h=400&fit=crop',
-    category: 'kitchen-storage',
-    weight: '4 lbs',
-    rating: 4.5,
-    reviews: 234
-  },
-  {
-    id: 'canister-set-ceramic',
-    name: 'Ceramic Canister Set',
-    description: '4-piece ceramic canisters with airtight bamboo lids',
-    price: 39.99,
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
-    category: 'kitchen-storage',
-    weight: '6 lbs',
-    rating: 4.7,
-    reviews: 189
-  },
-  {
-    id: 'vacuum-storage-bags',
-    name: 'Vacuum Storage Bags',
-    description: 'Space-saving vacuum seal bags for food storage',
-    price: 19.99,
-    image: 'https://images.unsplash.com/photo-1556909253-f3c6dae87846?w=400&h=400&fit=crop',
-    category: 'kitchen-storage',
-    weight: '1 lb',
-    rating: 4.3,
-    reviews: 278
-  },
-  {
-    id: 'bread-box-bamboo',
-    name: 'Bamboo Bread Box',
-    description: 'Large bamboo bread box with roll-top lid',
-    price: 49.99,
-    image: 'https://images.unsplash.com/photo-1556909297-8f4f4b9b4e6f?w=400&h=400&fit=crop',
-    category: 'kitchen-storage',
-    weight: '5 lbs',
-    rating: 4.6,
-    reviews: 145
-  },
-  {
-    id: 'pantry-organizers',
-    name: 'Clear Pantry Organizer Bins',
-    description: 'Set of 8 clear bins for pantry and cabinet organization',
-    price: 34.99,
-    image: 'https://images.unsplash.com/photo-1585515656662-a4e3944c1ab4?w=400&h=400&fit=crop',
-    category: 'kitchen-storage',
-    weight: '4 lbs',
-    rating: 4.5,
-    reviews: 167
-  },
-  {
-    id: 'mason-jar-set',
-    name: 'Mason Jar Storage Set',
-    description: '12-piece mason jar set with measuring lids',
-    price: 24.99,
-    originalPrice: 32.99,
-    image: 'https://images.unsplash.com/photo-1556909114-4f6e3e8f9eab?w=400&h=400&fit=crop',
-    category: 'kitchen-storage',
-    weight: '6 lbs',
-    isOnSale: true,
-    rating: 4.4,
     reviews: 234
   },
 
@@ -747,77 +424,6 @@ export const products: Product[] = [
     reviews: 234
   },
 
-  // Dinnerware - 6 products
-  {
-    id: 'dinner-plate-set-ceramic',
-    name: 'Ceramic Dinner Plate Set',
-    description: '12-piece ceramic dinnerware set, microwave and dishwasher safe',
-    price: 79.99,
-    originalPrice: 99.99,
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
-    category: 'dinnerware',
-    weight: '15 lbs',
-    isOnSale: true,
-    isPopular: true,
-    rating: 4.6,
-    reviews: 456
-  },
-  {
-    id: 'bowl-set-melamine',
-    name: 'Melamine Bowl Set',
-    description: 'Colorful melamine bowls, perfect for outdoor dining',
-    price: 34.99,
-    image: 'https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=400&h=400&fit=crop',
-    category: 'dinnerware',
-    weight: '3 lbs',
-    rating: 4.4,
-    reviews: 234
-  },
-  {
-    id: 'serving-platter-bamboo',
-    name: 'Bamboo Serving Platter',
-    description: 'Large bamboo serving board with cheese knife slots',
-    price: 29.99,
-    image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400&h=400&fit=crop',
-    category: 'dinnerware',
-    weight: '2 lbs',
-    rating: 4.7,
-    reviews: 189
-  },
-  {
-    id: 'salad-bowl-acacia',
-    name: 'Acacia Wood Salad Bowl',
-    description: 'Hand-crafted acacia wood salad bowl with servers',
-    price: 39.99,
-    image: 'https://images.unsplash.com/photo-1556909253-f3c6dae87846?w=400&h=400&fit=crop',
-    category: 'dinnerware',
-    weight: '2.5 lbs',
-    rating: 4.8,
-    reviews: 145
-  },
-  {
-    id: 'soup-bowls-ceramic',
-    name: 'Ceramic Soup Bowl Set',
-    description: 'Set of 6 deep ceramic soup bowls with handles',
-    price: 44.99,
-    image: 'https://images.unsplash.com/photo-1556909297-8f4f4b9b4e6f?w=400&h=400&fit=crop',
-    category: 'dinnerware',
-    weight: '6 lbs',
-    rating: 4.5,
-    reviews: 167
-  },
-  {
-    id: 'pasta-bowls-porcelain',
-    name: 'Porcelain Pasta Bowls',
-    description: 'Wide rim porcelain pasta bowls, set of 4',
-    price: 49.99,
-    image: 'https://images.unsplash.com/photo-1556909114-4f6e3e8f9eab?w=400&h=400&fit=crop',
-    category: 'dinnerware',
-    weight: '4 lbs',
-    rating: 4.6,
-    reviews: 123
-  },
-
   // Glassware - 7 products
   {
     id: 'wine-glass-set',
@@ -898,77 +504,6 @@ export const products: Product[] = [
     weight: '1.5 lbs',
     rating: 4.6,
     reviews: 123
-  },
-
-  // Kitchen Textiles - 6 products
-  {
-    id: 'kitchen-towel-set',
-    name: 'Microfiber Kitchen Towel Set',
-    description: 'Super absorbent microfiber kitchen towels, set of 12',
-    price: 19.99,
-    originalPrice: 26.99,
-    image: 'https://images.unsplash.com/photo-1556909114-4f6e3e8f9eab?w=400&h=400&fit=crop',
-    category: 'kitchen-textiles',
-    weight: '2 lbs',
-    isOnSale: true,
-    isPopular: true,
-    rating: 4.5,
-    reviews: 567
-  },
-  {
-    id: 'oven-mitts-silicone',
-    name: 'Silicone Oven Mitts',
-    description: 'Heat-resistant silicone oven mitts, up to 450°F',
-    price: 24.99,
-    image: 'https://images.unsplash.com/photo-1594736797933-d0f32e5d0681?w=400&h=400&fit=crop',
-    category: 'kitchen-textiles',
-    weight: '1 lb',
-    rating: 4.6,
-    reviews: 234
-  },
-  {
-    id: 'apron-adjustable-cotton',
-    name: 'Adjustable Cotton Apron',
-    description: 'Professional-style cotton apron with multiple pockets',
-    price: 22.99,
-    image: 'https://images.unsplash.com/photo-1556909114-46b0ac27c98c?w=400&h=400&fit=crop',
-    category: 'kitchen-textiles',
-    weight: '0.8 lbs',
-    rating: 4.4,
-    reviews: 189
-  },
-  {
-    id: 'pot-holders-quilted',
-    name: 'Quilted Pot Holders',
-    description: 'Heat-resistant quilted pot holders, set of 4',
-    price: 14.99,
-    image: 'https://images.unsplash.com/photo-1556909114-5ba4ade8648c?w=400&h=400&fit=crop',
-    category: 'kitchen-textiles',
-    weight: '0.5 lbs',
-    rating: 4.3,
-    reviews: 145
-  },
-  {
-    id: 'dish-drying-mat',
-    name: 'Microfiber Dish Drying Mat',
-    description: 'Large microfiber mat for air-drying dishes',
-    price: 16.99,
-    image: 'https://images.unsplash.com/photo-1556909253-f3c6dae87846?w=400&h=400&fit=crop',
-    category: 'kitchen-textiles',
-    weight: '0.6 lbs',
-    rating: 4.5,
-    reviews: 278
-  },
-  {
-    id: 'table-runner-linen',
-    name: 'Linen Table Runner',
-    description: 'Natural linen table runner for elegant dining',
-    price: 29.99,
-    image: 'https://images.unsplash.com/photo-1556909297-8f4f4b9b4e6f?w=400&h=400&fit=crop',
-    category: 'kitchen-textiles',
-    weight: '0.4 lbs',
-    rating: 4.7,
-    reviews: 156
   },
 
   // Food Preparation - 8 products
@@ -1064,90 +599,6 @@ export const products: Product[] = [
     isOnSale: true,
     rating: 4.5,
     reviews: 145
-  },
-
-  // Specialty Equipment - 7 products
-  {
-    id: 'pasta-machine-stainless',
-    name: 'Stainless Steel Pasta Machine',
-    description: 'Manual pasta machine with adjustable thickness settings',
-    price: 69.99,
-    image: 'https://images.unsplash.com/photo-1556909297-8f4f4b9b4e6f?w=400&h=400&fit=crop',
-    category: 'specialty-equipment',
-    weight: '8 lbs',
-    isPopular: true,
-    rating: 4.6,
-    reviews: 189
-  },
-  {
-    id: 'meat-thermometer-digital',
-    name: 'Digital Meat Thermometer',
-    description: 'Instant-read digital thermometer with probe and timer',
-    price: 29.99,
-    originalPrice: 39.99,
-    image: 'https://images.unsplash.com/photo-1556909114-46b0ac27c98c?w=400&h=400&fit=crop',
-    category: 'specialty-equipment',
-    weight: '0.5 lbs',
-    isOnSale: true,
-    rating: 4.7,
-    reviews: 278
-  },
-  {
-    id: 'mortar-pestle-granite',
-    name: 'Granite Mortar & Pestle',
-    description: 'Large granite mortar and pestle for spice grinding',
-    price: 34.99,
-    image: 'https://images.unsplash.com/photo-1556909254-4c4bcde4c3c3?w=400&h=400&fit=crop',
-    category: 'specialty-equipment',
-    weight: '6 lbs',
-    rating: 4.8,
-    reviews: 156
-  },
-  {
-    id: 'smoking-gun-handheld',
-    name: 'Handheld Smoking Gun',
-    description: 'Professional smoking gun for adding smoke flavor',
-    price: 89.99,
-    image: 'https://images.unsplash.com/photo-1594736797933-d0f32e5d0681?w=400&h=400&fit=crop',
-    category: 'specialty-equipment',
-    weight: '1.5 lbs',
-    rating: 4.5,
-    reviews: 89
-  },
-  {
-    id: 'sous-vide-circulator',
-    name: 'Immersion Sous Vide Circulator',
-    description: 'Precision temperature control for sous vide cooking',
-    price: 149.99,
-    image: 'https://images.unsplash.com/photo-1585515656662-a4e3944c1ab4?w=400&h=400&fit=crop',
-    category: 'specialty-equipment',
-    weight: '2 lbs',
-    rating: 4.6,
-    reviews: 234
-  },
-  {
-    id: 'ice-cream-maker',
-    name: 'Electric Ice Cream Maker',
-    description: '2-quart electric ice cream maker with compressor',
-    price: 199.99,
-    originalPrice: 249.99,
-    image: 'https://images.unsplash.com/photo-1556909114-5ba4ade8648c?w=400&h=400&fit=crop',
-    category: 'specialty-equipment',
-    weight: '22 lbs',
-    isOnSale: true,
-    rating: 4.4,
-    reviews: 145
-  },
-  {
-    id: 'dehydrator-food',
-    name: 'Food Dehydrator',
-    description: '9-tray food dehydrator with temperature control',
-    price: 119.99,
-    image: 'https://images.unsplash.com/photo-1556909253-f3c6dae87846?w=400&h=400&fit=crop',
-    category: 'specialty-equipment',
-    weight: '12 lbs',
-    rating: 4.5,
-    reviews: 167
   }
 ];
 

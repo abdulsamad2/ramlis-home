@@ -8,6 +8,7 @@ import { cn, truncateTitle } from '@/lib/utils';
 import { useCart } from '@/lib/cart-context';
 import { useWishlist } from '@/lib/wishlist-context';
 import { useState } from 'react';
+import ProductImageWatermark from './ProductImageWatermark';
 
 interface ProductCardProps {
   product: Product;
@@ -70,6 +71,7 @@ export default function ProductCard({ product, className, viewMode = 'grid' }: P
               className="object-cover group-hover:scale-105 transition-transform duration-500"
               sizes="200px"
             />
+            <ProductImageWatermark />
           </Link>
           
           {/* Badges */}
@@ -222,6 +224,7 @@ export default function ProductCard({ product, className, viewMode = 'grid' }: P
           className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
+        <ProductImageWatermark />
         {/* Quick Add Overlay */}
         <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-gradient-to-t from-black/60 to-transparent">
           <button 

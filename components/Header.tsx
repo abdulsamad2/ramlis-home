@@ -2,14 +2,12 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { 
   Menu, 
   X, 
-  Search, 
   ShoppingCart, 
   User, 
-  ChefHat,
   Heart,
   Home,
   Package,
@@ -28,9 +26,9 @@ import CartDrawer from './CartDrawer';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const { getItemsCount: getCartCount, toggleCart } = useCart();
   const { getItemsCount: getWishlistCount } = useWishlist();
   const { user, isAuthenticated, logout } = useUser();
@@ -52,10 +50,6 @@ export default function Header() {
     { href: '/products?filter=sale', label: 'Hot Deals', icon: Tag, badge: 'Hot' },
     { href: '/about', label: 'About', icon: Info },
     { href: '/contact', label: 'Contact', icon: MessageCircle },
-  ];
-
-  const quickCategories = [
-    'Cookware', 'Appliances', 'Bakeware', 'Utensils', 'Storage', 'Gadgets'
   ];
 
   return (
@@ -86,52 +80,16 @@ export default function Header() {
           <div className="flex justify-between items-center h-20">
             {/* Logo Section */}
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="group flex items-center space-x-4 transition-transform hover:scale-105">
-                <div className="relative">
-                  <div className="bg-gradient-to-br from-orange-500 to-red-600 p-3 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
-                    <ChefHat className="h-8 w-8 text-white" />
-                  </div>
-                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse"></div>
-                </div>
-                <div className="hidden sm:block">
-                  <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                    Ramlis Home™
-                  </h1>
-                  <p className="text-xs text-gray-500 -mt-1 font-medium">Premium Kitchen Solutions</p>
-                </div>
+              <Link href="/" className="group transition-transform hover:scale-105">
+                <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                  RAMLISHOME™
+                </h1>
               </Link>
-            </div>
-
-            {/* Advanced Search - Desktop */}
-            <div className="hidden lg:flex flex-1 max-w-2xl mx-6">
-              <div className="relative w-full group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Search className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
-                </div>
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search 1000+ premium kitchen products..."
-                  className="block w-full pl-12 pr-32 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 bg-gray-50/80 hover:bg-white focus:bg-white text-gray-900 placeholder-gray-500 font-medium"
-                />
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3 space-x-1">
-                  {quickCategories.slice(0, 2).map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setSearchQuery(category)}
-                      className="px-2 py-1 text-xs bg-orange-100 text-orange-700 rounded-lg hover:bg-orange-200 transition-colors font-medium"
-                    >
-                      {category}
-                    </button>
-                  ))}
-                </div>
-              </div>
             </div>
 
             {/* Navigation Links - Desktop */}
             <nav className="hidden xl:flex items-center space-x-1">
-              {navLinks.slice(0, 4).map((link) => {
+              {navLinks.map((link) => {
                 const IconComponent = link.icon;
                 const isActive = pathname === link.href;
                 return (
@@ -158,16 +116,11 @@ export default function Header() {
 
             {/* Action Buttons */}
             <div className="flex items-center space-x-2">
-              {/* Search Icon for Mobile/Tablet */}
-              <button className="lg:hidden p-2.5 text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-all duration-200">
-                <Search className="h-5 w-5" />
-              </button>
-
               {/* Notifications - Desktop Only */}
               <button className="hidden md:flex relative p-2.5 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200 group">
                 <Bell className="h-5 w-5 group-hover:scale-110 transition-transform" />
                 <span className="absolute -top-1 -right-1 bg-blue-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center font-bold animate-pulse">
-                  2
+                  5
                 </span>
               </button>
 
@@ -230,37 +183,7 @@ export default function Header() {
               : 'max-h-0 opacity-0 overflow-hidden'
           }`}>
             <div className="py-6 space-y-6 bg-white border-t border-gray-100">
-              {/* Mobile Search */}
-              <div className="px-1">
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search premium kitchen products..."
-                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-orange-500/20 focus:border-orange-500 bg-gray-50 transition-all font-medium"
-                  />
-                </div>
-                
-                {/* Quick Categories */}
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {quickCategories.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => {
-                        setSearchQuery(category);
-                        closeMenu();
-                      }}
-                      className="px-4 py-2 text-sm bg-orange-100 text-orange-700 rounded-xl hover:bg-orange-200 transition-colors font-medium"
-                    >
-                      {category}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Mobile Navigation Links */}
+                            {/* Mobile Navigation Links */}
               <div className="space-y-2">
                 {navLinks.map((link) => {
                   const IconComponent = link.icon;

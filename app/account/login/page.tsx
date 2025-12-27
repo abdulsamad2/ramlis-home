@@ -94,7 +94,7 @@ export default function LoginPage() {
           Sign in to your account
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
-          Welcome back to Ramlis Home
+          Welcome back to RAMLISHOME
         </p>
       </div>
 

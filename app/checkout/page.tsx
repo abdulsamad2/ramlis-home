@@ -469,6 +469,58 @@ export default function CheckoutPage() {
             {currentStep === 3 && (
               <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-6">
                 <h2 className="text-xl font-semibold mb-6">Payment information</h2>
+                
+                {/* PayPal Option */}
+                <div className="mb-6 p-4 bg-blue-50 border-2 border-blue-200 rounded-xl">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <span className="text-white font-bold text-lg">P</span>
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-blue-900">Pay with PayPal</h3>
+                        <p className="text-sm text-blue-700">Fast, secure payment</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => {
+                      // Redirect to PayPal payment
+                      const paypalEmail = 'Ramile79emile@gmail.com';
+                      const amount = total.toFixed(2);
+                      const itemName = `Order from RAMLISHOME™ (${state.items.length} items)`;
+                      
+                      // PayPal.me link for personal accounts
+                      const paypalUrl = `https://www.paypal.com/paypalme/ramile79emile/${amount}`;
+                      
+                      // Alternative: Standard PayPal payment link
+                      // const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(itemName)}&amount=${amount}&currency_code=USD`;
+                      
+                      window.open(paypalUrl, '_blank');
+                      
+                      toast.success('Redirecting to PayPal', 'Complete your payment in the new window');
+                    }}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+                  >
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.77.77 0 0 1 .76-.633h8.117c1.83 0 3.484.632 4.66 1.78 1.107 1.082 1.622 2.54 1.497 4.22-.24 3.234-2.39 5.574-5.243 5.574h-2.654a.77.77 0 0 0-.76.633l-.727 4.61a.641.641 0 0 1-.633.633z"/>
+                    </svg>
+                    Continue with PayPal
+                  </button>
+                  <p className="text-xs text-blue-600 mt-2 text-center">
+                    You'll be redirected to PayPal to complete your payment securely
+                  </p>
+                </div>
+
+                <div className="relative my-6">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-slate-300"></div>
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="px-4 bg-white text-slate-500">Or pay with card</span>
+                  </div>
+                </div>
+
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">Card number</label>
