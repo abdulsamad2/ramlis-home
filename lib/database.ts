@@ -506,6 +506,193 @@ const mapRowToUser = (row: any): User => ({
   updatedAt: row.updated_at
 });
 
+// Order management functions
+export interface Order {
+  id: number;
+  orderNumber: string;
+  userId?: string;
+  sessionId?: string;
+  totalAmount: number;
+  status: string;
+  shippingAddress?: string;
+  billingAddress?: string;
+  customerEmail?: string;
+  customerName?: string;
+  paymentMethod?: string;
+  createdAt: string;
+  updatedAt: string;
+  items?: OrderItem[];
+}
+
+export interface OrderItem {
+  id: number;
+  orderId: number;
+  productId: string;
+  productName?: string;
+  quantity: number;
+  price: number;
+}
+
+export const createOrder = (orderData: {
+  orderNumber: string;
+  userId?: string;
+  sessionId?: string;
+  totalAmount: number;
+  status?: string;
+  shippingAddress?: string;
+  billingAddress?: string;
+  customerEmail?: string;
+  customerName?: string;
+  paymentMethod?: string;
+}): number => {
+  const database = initDb();
+  const result = database.prepare(`
+    INSERT INTO orders (
+      order_number, user_id, session_id, total_amount, status,
+      shipping_address, billing_address
+    ) VALUES (?, ?, ?, ?, ?, ?, ?)
+  `).run(
+    orderData.orderNumber,
+    orderData.userId || null,
+    orderData.sessionId || null,
+    orderData.totalAmount,
+    orderData.status || 'pending',
+    orderData.shippingAddress || null,
+    orderData.billingAddress || null
+  );
+  return result.lastInsertRowid as number;
+};
+
+export const addOrderItem = (orderItem: {
+  orderId: number;
+  productId: string;
+  quantity: number;
+  price: number;
+}): void => {
+  const database = initDb();
+  database.prepare(`
+    INSERT INTO order_items (order_id, product_id, quantity, price)
+    VALUES (?, ?, ?, ?)
+  `).run(orderItem.orderId, orderItem.productId, orderItem.quantity, orderItem.price);
+};
+
+export const getAllOrders = (): Order[] => {
+  const database = initDb();
+  const rows = database.prepare(`
+    SELECT * FROM orders ORDER BY created_at DESC
+  `).all();
+  return rows.map(mapRowToOrder);
+};
+
+export const getOrderById = (id: number): Order | null => {
+  const database = initDb();
+  const row = database.prepare('SELECT * FROM orders WHERE id = ?').get(id);
+  if (!row) return null;
+  
+  const order = mapRowToOrder(row);
+  order.items = getOrderItems(id);
+  return order;
+};
+
+export const getOrderItems = (orderId: number): OrderItem[] => {
+  const database = initDb();
+  const rows = database.prepare(`
+    SELECT oi.*, p.name as product_name
+    FROM order_items oi
+    LEFT JOIN products p ON oi.product_id = p.id
+    WHERE oi.order_id = ?
+  `).all(orderId);
+  
+  return rows.map((row: any) => ({
+    id: row.id,
+    orderId: row.order_id,
+    productId: row.product_id,
+    productName: row.product_name,
+    quantity: row.quantity,
+    price: row.price
+  }));
+};
+
+export const updateOrderStatus = (orderId: number, status: string): void => {
+  const database = initDb();
+  database.prepare(`
+    UPDATE orders SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?
+  `).run(status, orderId);
+};
+
+export const deleteOrder = (orderId: number): void => {
+  const database = initDb();
+  database.prepare('DELETE FROM order_items WHERE order_id = ?').run(orderId);
+  database.prepare('DELETE FROM orders WHERE id = ?').run(orderId);
+};
+
+export const updateProduct = (productId: string, productData: Partial<Product>): void => {
+  const database = initDb();
+  const updates: string[] = [];
+  const values: any[] = [];
+  
+  if (productData.name !== undefined) {
+    updates.push('name = ?');
+    values.push(productData.name);
+  }
+  if (productData.description !== undefined) {
+    updates.push('description = ?');
+    values.push(productData.description);
+  }
+  if (productData.price !== undefined) {
+    updates.push('price = ?');
+    values.push(productData.price);
+  }
+  if (productData.originalPrice !== undefined) {
+    updates.push('original_price = ?');
+    values.push(productData.originalPrice);
+  }
+  if (productData.image !== undefined) {
+    updates.push('image = ?');
+    values.push(productData.image);
+  }
+  if (productData.category !== undefined) {
+    updates.push('category = ?');
+    values.push(productData.category);
+  }
+  if (productData.weight !== undefined) {
+    updates.push('weight = ?');
+    values.push(productData.weight);
+  }
+  if (productData.isPopular !== undefined) {
+    updates.push('is_popular = ?');
+    values.push(productData.isPopular ? 1 : 0);
+  }
+  if (productData.isOnSale !== undefined) {
+    updates.push('is_on_sale = ?');
+    values.push(productData.isOnSale ? 1 : 0);
+  }
+  
+  if (updates.length > 0) {
+    updates.push('updated_at = CURRENT_TIMESTAMP');
+    values.push(productId);
+    database.prepare(`UPDATE products SET ${updates.join(', ')} WHERE id = ?`).run(...values);
+  }
+};
+
+export const deleteProduct = (productId: string): void => {
+  const database = initDb();
+  database.prepare('DELETE FROM products WHERE id = ?').run(productId);
+};
+
+const mapRowToOrder = (row: any): Order => ({
+  id: row.id,
+  orderNumber: row.order_number,
+  userId: row.user_id,
+  sessionId: row.session_id,
+  totalAmount: row.total_amount,
+  status: row.status,
+  shippingAddress: row.shipping_address,
+  billingAddress: row.billing_address,
+  createdAt: row.created_at,
+  updatedAt: row.updated_at
+});
+
 // Close database connection when process exits
 process.on('exit', () => {
   if (db) {

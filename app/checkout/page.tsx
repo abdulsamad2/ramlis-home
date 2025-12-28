@@ -472,168 +472,52 @@ export default function CheckoutPage() {
                 
                 {/* PayPal Option */}
                 <div className="mb-6 p-4 bg-blue-50 border-2 border-blue-200 rounded-xl">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">P</span>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-blue-900">Pay with PayPal</h3>
-                        <p className="text-sm text-blue-700">Fast, secure payment</p>
-                      </div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">P</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-blue-900">Pay with PayPal</h3>
+                      <p className="text-sm text-blue-700">Fast, secure payment</p>
                     </div>
                   </div>
                   <button
-                    onClick={() => {
-                      // Redirect to PayPal payment
-                      const paypalEmail = 'Ramile79emile@gmail.com';
-                      const amount = total.toFixed(2);
-                      const itemName = `Order from RAMLISHOME™ (${state.items.length} items)`;
-                      
-                      // PayPal.me link for personal accounts
-                      const paypalUrl = `https://www.paypal.com/paypalme/ramile79emile/${amount}`;
-                      
-                      // Alternative: Standard PayPal payment link
-                      // const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(itemName)}&amount=${amount}&currency_code=USD`;
-                      
-                      window.open(paypalUrl, '_blank');
-                      
-                      toast.success('Redirecting to PayPal', 'Complete your payment in the new window');
+                    onClick={async () => {
+                      setIsProcessing(true);
+                      try {
+                        const response = await fetch('/api/paypal/create-payment', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            amount: total,
+                            items: state.items,
+                            customerEmail: formData.email,
+                            shippingAddress: {
+                              firstName: formData.firstName,
+                              lastName: formData.lastName,
+                              address: formData.address,
+                              city: formData.city,
+                              state: formData.state,
+                              zipCode: formData.zipCode,
+                            },
+                          }),
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.approvalUrl) {
+                          window.location.href = data.approvalUrl;
+                        } else {
+                          throw new Error('Failed to create PayPal payment');
+                        }
+                      } catch (error) {
+                        console.error('PayPal Error:', error);
+                        toast.error('Payment failed', 'Please try again');
+                        setIsProcessing(false);
+                      }
                     }}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
-                  >
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.77.77 0 0 1 .76-.633h8.117c1.83 0 3.484.632 4.66 1.78 1.107 1.082 1.622 2.54 1.497 4.22-.24 3.234-2.39 5.574-5.243 5.574h-2.654a.77.77 0 0 0-.76.633l-.727 4.61a.641.641 0 0 1-.633.633z"/>
-                    </svg>
-                    Continue with PayPal
-                  </button>
-                  <p className="text-xs text-blue-600 mt-2 text-center">
-                    You'll be redirected to PayPal to complete your payment securely
-                  </p>
-                </div>
-
-                <div className="relative my-6">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-slate-300"></div>
-                  </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-4 bg-white text-slate-500">Or pay with card</span>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Card number</label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        value={formData.cardNumber}
-                        onChange={(e) => handleInputChange('cardNumber', formatCardNumber(e.target.value))}
-                        placeholder="1234 5678 9012 3456"
-                        maxLength={19}
-                        className={cn(
-                          "w-full px-4 py-3 pr-12 rounded-lg border focus:outline-none focus:ring-2 transition-all",
-                          errors.cardNumber 
-                            ? "border-red-300 focus:ring-red-200 focus:border-red-500" 
-                            : "border-slate-300 focus:ring-primary/20 focus:border-primary"
-                        )}
-                      />
-                      <CreditCard className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
-                    </div>
-                    {errors.cardNumber && <p className="text-red-600 text-sm mt-1">{errors.cardNumber}</p>}
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Expiry date</label>
-                      <input
-                        type="text"
-                        value={formData.expiryDate}
-                        onChange={(e) => handleInputChange('expiryDate', formatExpiryDate(e.target.value))}
-                        placeholder="MM/YY"
-                        maxLength={5}
-                        className={cn(
-                          "w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all",
-                          errors.expiryDate 
-                            ? "border-red-300 focus:ring-red-200 focus:border-red-500" 
-                            : "border-slate-300 focus:ring-primary/20 focus:border-primary"
-                        )}
-                      />
-                      {errors.expiryDate && <p className="text-red-600 text-sm mt-1">{errors.expiryDate}</p>}
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">CVV</label>
-                      <div className="relative">
-                        <input
-                          type={showCvv ? "text" : "password"}
-                          value={formData.cvv}
-                          onChange={(e) => handleInputChange('cvv', e.target.value.replace(/\D/g, '').slice(0, 4))}
-                          placeholder="123"
-                          className={cn(
-                            "w-full px-4 py-3 pr-12 rounded-lg border focus:outline-none focus:ring-2 transition-all",
-                            errors.cvv 
-                              ? "border-red-300 focus:ring-red-200 focus:border-red-500" 
-                              : "border-slate-300 focus:ring-primary/20 focus:border-primary"
-                          )}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowCvv(!showCvv)}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600"
-                        >
-                          {showCvv ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                        </button>
-                      </div>
-                      {errors.cvv && <p className="text-red-600 text-sm mt-1">{errors.cvv}</p>}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Name on card</label>
-                    <input
-                      type="text"
-                      value={formData.cardName}
-                      onChange={(e) => handleInputChange('cardName', e.target.value)}
-                      className={cn(
-                        "w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all",
-                        errors.cardName 
-                          ? "border-red-300 focus:ring-red-200 focus:border-red-500" 
-                          : "border-slate-300 focus:ring-primary/20 focus:border-primary"
-                      )}
-                    />
-                    {errors.cardName && <p className="text-red-600 text-sm mt-1">{errors.cardName}</p>}
-                  </div>
-                  
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="saveInfo"
-                      checked={formData.saveInfo}
-                      onChange={(e) => handleInputChange('saveInfo', e.target.checked)}
-                      className="rounded border-slate-300 text-primary focus:ring-primary"
-                    />
-                    <label htmlFor="saveInfo" className="ml-2 text-sm text-slate-600">
-                      Save payment information for next time
-                    </label>
-                  </div>
-                </div>
-                
-                <div className="flex justify-between mt-6">
-                  <button
-                    onClick={handleBack}
-                    className="text-slate-600 hover:text-slate-900 font-medium transition-colors"
-                  >
-                    Back to shipping
-                  </button>
-                  <button
-                    onClick={handleSubmit}
                     disabled={isProcessing}
-                    className={cn(
-                      "px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2",
-                      isProcessing 
-                        ? "bg-slate-400 cursor-not-allowed text-white" 
-                        : "bg-primary hover:bg-blue-600 text-white"
-                    )}
+                    className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
                   >
                     {isProcessing ? (
                       <>
@@ -642,10 +526,24 @@ export default function CheckoutPage() {
                       </>
                     ) : (
                       <>
-                        <Lock className="w-4 h-4" />
-                        Pay ${total.toFixed(2)}
+                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.77.77 0 0 1 .76-.633h8.117c1.83 0 3.484.632 4.66 1.78 1.107 1.082 1.622 2.54 1.497 4.22-.24 3.234-2.39 5.574-5.243 5.574h-2.654a.77.77 0 0 0-.76.633l-.727 4.61a.641.641 0 0 1-.633.633z"/>
+                        </svg>
+                        Continue with PayPal
                       </>
                     )}
+                  </button>
+                  <p className="text-xs text-blue-600 mt-2 text-center">
+                    You'll be redirected to PayPal to complete your payment securely
+                  </p>
+                </div>
+
+                <div className="flex justify-between mt-6">
+                  <button
+                    onClick={handleBack}
+                    className="text-slate-600 hover:text-slate-900 font-medium transition-colors"
+                  >
+                    Back to shipping
                   </button>
                 </div>
               </div>

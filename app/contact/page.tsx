@@ -30,8 +30,9 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-medium text-slate-900 mb-1">Our Office</h3>
                       <p className="text-slate-600 text-sm leading-relaxed">
-                        123 Commerce Avenue, Suite 100<br />
-                        Business District, NY 10001<br />
+                        SAMARA SHOP SERVICES LLC<br />
+                        7726 Winegard Road<br />
+                        Orlando, FL 32609-7146<br />
                         United States
                       </p>
                     </div>
@@ -67,13 +68,19 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
-              <div className="bg-slate-200 rounded-2xl h-[300px] w-full relative overflow-hidden group">
-                 <div className="absolute inset-0 flex items-center justify-center text-slate-500 font-medium bg-slate-100">
-                    <MapPin className="w-8 h-8 mr-2" />
-                    Interactive Map Container
-                 </div>
-                 {/* In a real app, embed Google Maps iframe here */}
+              {/* Interactive Map */}
+              <div className="bg-slate-200 rounded-2xl h-[300px] w-full relative overflow-hidden shadow-sm border border-slate-100">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.5!2d-81.4!3d28.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s7726%20Winegard%20Road%2C%20Orlando%2C%20FL%2032609!5e0!3m2!1sen!2sus!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="SAMARA SHOP SERVICES LLC Location"
+                  className="rounded-2xl"
+                />
               </div>
             </div>
 
