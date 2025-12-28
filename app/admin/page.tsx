@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { Package, ShoppingCart, Plus, Edit, Trash2, Eye, DollarSign } from "lucide-react";
 import { useToast } from "@/lib/toast-context";
@@ -13,6 +13,9 @@ interface Order {
   shippingAddress?: string;
   createdAt: string;
   items?: any[];
+  customerEmail?: string;
+  customerName?: string;
+  paymentMethod?: string;
 }
 
 interface Product {
